@@ -7,7 +7,7 @@ public class Exercicio07 {
         boolean sol = true;
         boolean nublado = false;
 
-        chuva && nublado = false;
+        //chuva && nublado;
         System.out.println();
 
 

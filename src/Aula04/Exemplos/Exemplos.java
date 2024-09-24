@@ -1,6 +1,6 @@
-package Aula04;
+package Aula04.Exemplos;
 
-public class Main {
+public class Exemplos {
     public static void main(String[] args) {
         //Ex.1
         String corSemaforo = "verde";
@@ -18,13 +18,13 @@ public class Main {
 
         int idade = 10;
 
-        if (idade > 0 && idade <= 12){
+        if (idade > 0 && idade <= 12) {
             System.out.println("criança");
-        } else if (idade>12 && idade <=17) {
+        } else if (idade > 12 && idade <= 17) {
             System.out.println("Adolescente");
-        } else if (idade> 17 && idade<= 64){
+        } else if (idade > 17 && idade <= 64) {
             System.out.println("Adulto");
-        } else if (idade< 65){
+        } else if (idade < 65) {
             System.out.println("idoso");
         } else {
             System.out.println("Idade inválida");
@@ -40,20 +40,20 @@ public class Main {
 
         idade = 10;
         String maioridade;
-        maioridade = idade>18 ? "maior de idade" : "menor de idade";
+        maioridade = idade > 18 ? "maior de idade" : "menor de idade";
         System.out.println(maioridade);
 
         //Ex. 6
 
         float preco = 100f;
         float desconto;
-        desconto = preco>80 ? 0.25f : 0;
-        System.out.println("Valor com desconto = "+(preco - preco*desconto) );
+        desconto = preco > 80 ? 0.25f : 0;
+        System.out.println("Valor com desconto = " + (preco - preco * desconto));
 
         //Ex. Switch
-        
+
         corSemaforo = "amarelo";
-        switch (corSemaforo){
+        switch (corSemaforo) {
             case "verde", "Verde":
                 System.out.println("Siga");
                 break;
@@ -76,8 +76,8 @@ public class Main {
         System.out.println("2- Opção 2");
         System.out.println("3- Opção 3");
 
-        int escolhaUsuario =1;
-        switch (escolhaUsuario){
+        int escolhaUsuario = 1;
+        switch (escolhaUsuario) {
             case 1:
                 System.out.println("Parabéns, você escolheu a opção 1");
                 break;
@@ -94,18 +94,18 @@ public class Main {
 //Ex Verificação de Sistema
         System.out.println("Digite a sua idade");
         int idadeUsuario = 1;
-        if (idadeUsuario >= 18){
+        if (idadeUsuario >= 18) {
             System.out.println("Você está autorizado");
         } else System.out.println("O acesso só é permitido para maiores de 18 anos");
 
         //Ex Desconto em Compra
 
-        double valorFinal =
-                double desconto = valorFinal - valorFinal*0.10;
+        float valorFinal=0;
+         desconto =  valorFinal - valorFinal * 0.10f;
 
-                if (valorFinal >100){
-                    System.out.println("O valor total da compra com desconto de dez por cento é: "+ valorFinal);
-                }
+        if (valorFinal > 100) {
+            System.out.println("O valor total da compra com desconto de dez por cento é: " + valorFinal);
+        }
 
     }
 }
