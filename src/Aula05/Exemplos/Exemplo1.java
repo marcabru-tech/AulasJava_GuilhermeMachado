@@ -8,5 +8,6 @@ public class Exemplo1 {
             System.out.println(idade);
             idade = idade +1;
         }
+
     }
 }
