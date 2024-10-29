@@ -1,4 +1,5 @@
 package Aula07.Exemplos.Exercicios;
+/*
 // Exercício 3: Função para calcular o dobro de um número
 
 public class Exercicio3 {
@@ -13,3 +14,4 @@ public class Exercicio3 {
     public static int dobrar(int numero) {
         return numero * 2;  // Retorna o dobro do número
     }
+*/

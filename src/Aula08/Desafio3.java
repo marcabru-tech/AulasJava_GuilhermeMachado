@@ -1,17 +1,19 @@
-package Aula07;
+package Aula08;
 
+import java.io.*;
 import java.util.Scanner;
 
-public class Desafio2 {
+
+public class Desafio3 {
 
     static String[][] matrizCadastro = {null};
-   static Scanner scanner = new Scanner(System.in);
-   static String[] cabecalho = {"ID", "Nome", "Telefone", "Email"};
-    matrizCadastro[0]=cabecalho;
+    static File bancoDeDados = new File("src\\Aula08\\Exemplos\\bancoDeDados.txt");
+    static Scanner scanner = new Scanner(System.in);
+    static String[] cabecalho = {"ID", "Nome", "Telefone", "Email"};
 
     public static void main(String[] args) {
-
-
+        carregarDadosDoArquivo();
+        matrizCadastro[0] = cabecalho;
 
         int opcao;
         do {
@@ -30,11 +32,13 @@ public class Desafio2 {
                     cadastrarUsuario();
                     break;
                 case 2:
-                    exibirCadastro( cabecalho);
+                    exibirCadastro();
                     break;
                 case 3:
+                    atualizarUsuario();
                     break;
                 case 4:
+                    deletarUsuario();
                     break;
                 case 5:
                     System.out.println("Fim do Programa!");
@@ -68,10 +72,11 @@ public class Desafio2 {
                 novaMatriz[linhas][colunas] = scanner.nextLine();
             }
         }
-        matrizCadastro =  novaMatriz;
+        matrizCadastro = novaMatriz;
+        salvarDadosNoArquivo();
     }
 
-    private static void exibirCadastro( String[] cabecalho) {
+    private static void exibirCadastro() {
         String tabela = "";
         for (int linhas = 0; linhas < matrizCadastro.length; linhas++) {
             for (int colunas = 0; colunas < cabecalho.length; colunas++) {
@@ -82,14 +87,14 @@ public class Desafio2 {
         }
         System.out.println(tabela);
     }
-    private static void atualizarUsuario(){
+
+    private static void atualizarUsuario() {
         exibirCadastro();
         System.out.print("Digite o id do usuário que deseja atualizar");
         int idUsuario = scanner.nextInt();
         scanner.nextLine();
         System.out.println("Atualiza as informações a seguir");
-        System.out.println(matrizCadastro[0]0+"-" + idUsuario);
-
+        System.out.println(matrizCadastro[0][0] + "-" + idUsuario);
 
 
         for (int colunas = 1; colunas < matrizCadastro[0].length; colunas++) {
@@ -101,20 +106,22 @@ public class Desafio2 {
         System.out.println("Usuário atualizado com sucesso");
         exibirCadastro();
 
+        salvarDadosNoArquivo();
+
 
     }
 
-    private static void deletarUsuario(){
+    private static void deletarUsuario() {
         exibirCadastro();
         System.out.println("Digite o usuário que deseja deletar");
         int idUsuario = scanner.nextInt();
         scanner.nextLine();
 
-        String[][] novaMatriz = new String[matrizCadastro.length-1][matrizCadastro[0].length];
-        novaMatriz [0]= cabecalho;
+        String[][] novaMatriz = new String[matrizCadastro.length - 1][matrizCadastro[0].length];
+        novaMatriz[0] = cabecalho;
 
         for (int linhaMatrizCadastro = 1, linhaNovaM = 1; linhaMatrizCadastro < matrizCadastro.length; linhaMatrizCadastro++) {
-            if(idUsuario == linhaMatrizCadastro)
+            if (idUsuario == linhaMatrizCadastro)
                 continue;
             novaMatriz[linhaNovaM] = matrizCadastro[linhaMatrizCadastro];
             novaMatriz[linhaNovaM][0] = String.valueOf(linhaNovaM);
@@ -123,7 +130,46 @@ public class Desafio2 {
         }
         matrizCadastro = novaMatriz;
         exibirCadastro();
+        salvarDadosNoArquivo();
+    }
+
+    private static void salvarDadosNoArquivo() {
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(bancoDeDados))) {
+            for (String[] linhaMatriz : matrizCadastro) {
+
+                bufferedWriter.write(String.join(",", linhaMatriz) + "\n");
+            }
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    private static void carregarDadosDoArquivo() {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(bancoDeDados))) {
+            if (!bancoDeDados.exists())
+                return;
+            String linha = "", dados = "";
+
+            while ((linha = bufferedReader.readLine()) != null) {
+                dados += linha + "\n";
+
+            }
+            String[] linhaUsuario = dados.split("\n");
+            int qtdColunas = linhaUsuario[0].split(",").length;
+
+            matrizCadastro = new String[linhaUsuario.length][qtdColunas];
+
+            for (int linhas = 0; linhas < linhaUsuario.length; linhas++) {
+                matrizCadastro[linhas] = linhaUsuario[linhas].split(",");
+
+            }
+
+
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }
-

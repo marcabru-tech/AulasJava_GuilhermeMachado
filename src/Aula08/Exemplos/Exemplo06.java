@@ -5,18 +5,17 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
 public class Exemplo6 {
     public static void main(String[] args) {
 
         try {
-            FileWriter fileWriter = new FileWriter(fileName:"src\\arquivo.txt", append true);
+            FileWriter fileWriter = new FileWriter("src/arquivo.txt", true); // Corrected path
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            bufferedWriter.write(str:"\nTexto escrito no arquivo com buffer");
+            bufferedWriter.write("\nTexto escrito no arquivo com buffer"); // Removed str:
             bufferedWriter.close();
-        } catch (IOException e){
-            throw new RuntimeException(e);
+        } catch (IOException e) {
+            System.err.println("Erro ao escrever no arquivo: " + e.getMessage()); // Informative error message
         }
     }
 }

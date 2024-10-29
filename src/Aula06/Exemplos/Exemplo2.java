@@ -7,15 +7,15 @@ public class Exemplo2 {
         Scanner scanner = new Scanner(System.in);
         int[] vetor = new int[4];
 
-        System.out.println('Digite o primeiro numero');
+        System.out.println("Digite o primeiro numero");
         vetor[0] = scanner.nextInt();
-        System.out.println('Digite o segundo numero');
+        System.out.println("Digite o segundo numero");
         vetor[1] = scanner.nextInt();
-        System.out.println('Digite o terceiro numero');
+        System.out.println("Digite o terceiro numero");
         vetor[2] = scanner.nextInt();
-        System.out.println('Digite o quarto numero');
+        System.out.println("Digite o quarto numero");
         vetor[3] = scanner.nextInt();
-        System.out.println("vetor{'+vetor[0]+", "+vetor[1]+", "+vetor[2]+", "+vetor[3]+"}");
+        System.out.println("vetor{+vetor[0]"+ "+vetor[1]"+ "+vetor[2]"+ "+vetor[3]");
 
 
 
