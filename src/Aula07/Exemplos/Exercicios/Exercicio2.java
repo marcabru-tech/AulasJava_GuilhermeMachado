@@ -1,4 +1,4 @@
-package Exercicios;
+package Aula07.Exemplos.Exercicios;
 // Exercício 2: Função que soma dois números
 
 public static void main(String[] args) {

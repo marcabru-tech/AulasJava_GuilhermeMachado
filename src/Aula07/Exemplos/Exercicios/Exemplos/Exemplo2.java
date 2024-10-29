@@ -1,4 +1,4 @@
-package Exemplos;
+package Aula07.Exemplos.Exercicios.Exemplos;
 
 public class Exemplo2 {
     public static void main(String[] args) {

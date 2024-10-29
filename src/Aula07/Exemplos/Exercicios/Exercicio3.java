@@ -1,4 +1,4 @@
-package Exercicios;
+package Aula07.Exemplos.Exercicios;
 // Exercício 3: Função para calcular o dobro de um número
 
 public class Exercicio3 {
